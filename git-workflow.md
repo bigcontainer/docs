@@ -46,5 +46,17 @@ $ git merge master
 $ git commit -v
 ```
 
+* A simple ‘git fetch’ will basically give you a TODO list of what every is
+  currently working on:
+```
+$ git fetch --all
+```
+It also lets everyone see, by looking at the GitHub Branch List page, what
+everyone else is working on so they can inspect them and see if they want to
+help with something.
+
+
+
+
 References:
 * GitHub workflow: https://help.github.com/articles/what-is-a-good-git-workflow/
