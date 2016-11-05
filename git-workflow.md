@@ -55,8 +55,17 @@ It also lets everyone see, by looking at the GitHub Branch List page, what
 everyone else is working on so they can inspect them and see if they want to
 help with something.
 
+* Remove all your local branches which are remotely deleted.
+```
+$ git fetch -p
+```
+you can set this automatically
 
-
+```
+git config fetch.prune true
+or
+git config --global fetch.prune true
+```
 
 References:
 * GitHub workflow: https://help.github.com/articles/what-is-a-good-git-workflow/
