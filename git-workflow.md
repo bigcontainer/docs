@@ -55,6 +55,13 @@ It also lets everyone see, by looking at the GitHub Branch List page, what
 everyone else is working on so they can inspect them and see if they want to
 help with something.
 
+* Delete local branch and remote branch:
+
+```
+local branch: git branch -d fix_flume_dockerfile
+remote branch: git push origin --delete fix_flume_dockerfile
+```
+
 * Remove all your local branches which are remotely deleted.
 ```
 $ git fetch -p
