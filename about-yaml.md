@@ -1,5 +1,7 @@
-http://www.yaml.org/
--------------------
+YAML How-To
+-----------
+
+[YAML main site](http://www.yaml.org)
 
 YAML's markup can use whitespace to indicate scoping of items. Tabs are not
 allowed, so there is no chance for confusion about indention level. 
@@ -9,8 +11,8 @@ existing Python data types like dictionaries, lists, strings, and integers.
 
 - Example YAML vs Python
 
-# YAML - mapping   
-name: Jesse
+ YAML - mapping   
+ name: Jesse
 
 # Python - dictionary (key:value)
 {'name': 'Jesse'}
