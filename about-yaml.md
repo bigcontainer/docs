@@ -11,15 +11,19 @@ existing Python data types like dictionaries, lists, strings, and integers.
 
 - Example YAML vs Python
 
- YAML - mapping   
- name: Jesse
+ YAML - mapping
+'''
+name: Jesse
+'''
 
-# Python - dictionary (key:value)
+ Python - dictionary (key:value)
+'''
 {'name': 'Jesse'}
+'''
 
 - More complex example:
 
-# YAML
+YAML
 object:
     attributes:
         - attr1
