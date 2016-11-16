@@ -12,24 +12,25 @@ existing Python data types like dictionaries, lists, strings, and integers.
 - Example YAML vs Python
 
  YAML - mapping
-'''
+```
 name: Jesse
-'''
+```
 
  Python - dictionary (key:value)
-'''
+```
 {'name': 'Jesse'}
-'''
+```
 
 - More complex example:
 
-YAML
+```
 object:
     attributes:
         - attr1
         - attr2
         - attr3
     methods: [ getter, setter ]
+```
 
 A a top-level entity named "object". This "object" has two block mappings:
 "attributes" and "methods". The "attributes" mapping uses the a verbose
@@ -41,22 +42,26 @@ In Python terminology this document is a dictionary with a key "object", and a
 "value" made of a another dictionary with a key "attributes" with value "a list",
 and a key "methods" with value other list:
 
- # Python
+Python
+```
 {'object': {'attributes': ['attr1', 'attr2', 'attr3'], 'methods': ['getter', 'setter']}}
+```
 
 - Strings do not require quotation:
-
- # YAML
+```
 sonnet: |
     I wish I could
     write a poem
     but I can't
+```
 
 This is a YAML document with a mapping, a dictionary with a key "sonnet" with a
 string as value. In Python we get this dict:
 
- # Python
+Python
+```
 {'sonnet': "I wish I could\nwrite a poem\nbut I can't\n"}
+```
 
 Note that Trailing and preceding whitespace is trimmed out in the basic use
 case of ''|''.
@@ -68,21 +73,23 @@ file in this case. Instead, think of a document as just a chunk of YAML. You
 can have multiple documents in a single stream of YAML, if each one is
 separated by ''---'', like:
 
- # YAML
+```
 ---
 document: this is doc 1
 ---
 document: this is doc 2
+```
 
 - YAML also supports variables:
-
- # YAML
+```
 some_thing: &NAME foobar
 other_thing: * NAME
+```
 
-Parses to:
-
+Parses to (Python):
+```
 {'other_thing': 'foobar', 'some_thing': 'foobar'}
+```
 
 - Terminology
 
@@ -101,18 +108,20 @@ denote scope. The flow sequence is written as a comma separated list within
 square brackets. In a similar manner, the flow mapping uses curly braces.
 
 Sequence of Sequences:
-
+```
 - [name        , hr, avg  ]
 - [Mark McGwire, 65, 0.278]
 - [Sammy Sosa  , 63, 0.288]
+```
 
 Mapping of Mappings:
-
+```
 Mark McGwire: {hr: 65, avg: 0.278}
 Sammy Sosa: {
     hr: 63,
     avg: 0.288
 }
+```
 
 YAML uses three dashes (“---”) to separate directives from document content.
 This also serves to signal the start of a document if no directives are
