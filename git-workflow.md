@@ -81,5 +81,11 @@ git checkout master -- filefrommaster
 ```
 This command make a checkout of filefromaster file to targetbranch.
 
+* Create local branch from an already created remote branch:
+```
+git checkout -b blueprints origin/blueprints
+```
+
+
 References:
 * GitHub workflow: https://help.github.com/articles/what-is-a-good-git-workflow/
