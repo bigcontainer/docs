@@ -56,10 +56,14 @@ and the path for importing the package will be mypackage.
 
 https://github.com/moovweb/gvm
 
+```
 $ bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
 $ source ~/.gvm/scripts/gvm
 $ gvm version
 Go Version Manager v1.0.22 installed at ...
+```
+
+```
 $ gvm
 Usage: gvm [command]
 
@@ -82,34 +86,51 @@ Commands:
   alias      - manage go version aliases
   pkgset     - manage go packages sets
   pkgenv     - edit the environment for a package set
+```
 
+```
 $ gvm install go1.7.3 -B
 Installing go1.7.3 from binary source
+```
 
+```
 $ gvm list
 gvm gos (installed)
    go1.7.3
    system
+```
 
+```
 $ gvm use go1.7.3
 Now using version go1.7.3
+```
 
+```
 $ which go
 ~/.gvm/gos/go1.7.3/bin/go
+```
 
+```
 $ gvm use system
 Now using version system
+```
 
+```
 $ which go
 /usr/lib/golang/bin/go
+```
 
+```
 $ gvm use go1.7.3 --default
 Now using version go1.7.3
+```
 
+```
 $ gvm list
 gvm gos (installed)
 => go1.7.3
    system
+```
 
 So now we have a local version of go installed, our GOPATH and PATH are setup,
 and we have access to the go executable. Now what? One of the neat things about
