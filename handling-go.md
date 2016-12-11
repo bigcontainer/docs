@@ -137,4 +137,37 @@ and we have access to the go executable. Now what? One of the neat things about
 gvm is the notion of pkgsets, basically allowing you to define separate
 "workspaces" and group a set of go projects using the same go version.
 
+Let's create a pkgset called "example".
+
+```
+$ gvm pkgset create example
+$ gvm pkgset list
+gvm go package sets (go1.7.3)
+    example
+=>  global
+
+$ gvm pkgset use example
+$ gvm pkgset use example --default
+```
+If we inspect our GOPATH and PATH, we can see that they have been updated to
+reflect our pkgset location: ~/..gvm/pkgsets/go1.7.3/example
+
+However, let's setup another location for our code, for example $HOME/src/go.
+
+```
+$ mkdir -p ~/src/go/{bin,pkg,src}
+```
+
+Now that we have the proper folder structure for go, we'll need to update our
+environment. We could manually set GOPATH and PATH to be prefixed with our new
+src directory, but there's a better way. We'll use the gvm pkgenv command with
+our fresh work pkgset so that our new workspace will always be found in GOPATH.
+
+```
+$ gvm pkgenv work
+```
+
+
+
+
 
