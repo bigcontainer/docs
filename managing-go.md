@@ -1,12 +1,26 @@
 #What is Go
 
+Three foundations:
+
 Go Language
 Go Libraries
-Go tooling
+Go Tools
 
 #Google pattner workflow for Go Lang
 
 https://golang.org/doc/code.html
+
+#About Go Tools
+
+Go tools are packages and tools that support the Go programming language.
+Some of the tools are included in binary Go distributions.  Others can be 
+fetched with "go get".
+
+Go also comes with the go tool, a sophisticated but simple-to-use command
+for managing workspaces of Go packages (download, build, and run programs).
+
+Go command-line interface uses the ‘‘Swiss army knife’’ style, with over a
+dozen subcommands. 
 
 #Go Workspace
 
@@ -15,7 +29,10 @@ simply a root directory of the Go programs.  A workspace contains three
 subdirectories at its root:
 
 1. root src: This directory contains Go source files organized into packages.
-2. packages pkg: This directory contains Go package objects.
+   (all the Go source code organized by import path).
+2. packages pkg: This directory contains Go package objects (contains the
+   compiled versions of the available libraries so the compiler can link against
+   them without recompiling them.)
 3. objects bin: This directory contains executable commands (executable
 programs).
 
@@ -30,11 +47,18 @@ The Go tool builds Go packages and installs the resulting binaries into the pkg
 directory if it is a shared library, and into the bin directory if it is an 
 executable program.
 
+When starting a new program or library, it is recommended to do so inside
+the src folder, using a fully qualified path (for instance: github.com/<your
+username>/<project name>)
+
 #GOPATH
 
 You write Go programs in the workspace, which you should manually specify so
 that Go runtime knows the workspace location. You can set the workspace 
-location by using the GOPATH environment variable.
+location by using the GOPATH environment variable. So the only configuration 
+most users ever need is the GOPATH environment variable, which specifies 
+the root of the workspace. When switching to a different workspace, 
+users update the value of GOPATH.
 
 You write Go programs as packages into the GOPATH src directory. A single
 directory is used for a single package. Go is designed to easily work with 
@@ -45,17 +69,36 @@ as your base path.
 Note: For example, if you have a GitHub account at github.com/user, it should
 be your base path. Let’s say you write a package named "mypackage" at 
 github.com/user; your code organization path will be at 
-%GOPATH%/src/github.com/user/mypackage. When you import this package to other
-%programs, the path for importing the package will be github.com/user/mypackage. 
+${GOPATH}/src/github.com/user/mypackage. When you import this package to other
+programs, the path for importing the package will be github.com/user/mypackage. 
 If you maintain the source in your local system, you can directly write programs 
 under the GOPATH src directory. Suppose that you write a package named mypackage 
-on a local system; your code organization path will be at %GOPATH%/src/mypackage, 
+on a local system; your code organization path will be at ${GOPATH}/src/mypackage, 
 and the path for importing the package will be mypackage.
+
+Notes about GOPATH and GOROOT:
+https://dave.cheney.net/2013/06/14/you-dont-need-to-set-goroot-really
+
+GOROOT is the second most important environment variable: specifies the root
+directory of the Go distribution, which provides all the packages of the 
+standard library. The director y structure beneath GOROOT resembles that of 
+GOPATH , so, for example, the source files of the fmt package reside in
+the $GOROOT/src/fmt directory. Users never need to set GOROOT since, by default,
+the go tool will use the location where it was installed.
+
+The "go env" command prints the effective values of the environment variables
+relevant to the toolchain, including the default values for the missing ones. 
+GOOS specifies the target operating system (for example, android , linux , 
+darwin , or windows ) and GOARCH specifies the target processor architecture, 
+such as amd64 , 386 , or arm . Although GOPATH is the only variable you must set.
 
 #Go Version Manager - GVM
 
+GVM provides an interface to manage Go versions.
+
 https://github.com/moovweb/gvm
 
+##GVM Installation
 ```
 $ bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
 $ source ~/.gvm/scripts/gvm
@@ -88,7 +131,9 @@ Commands:
   pkgenv     - edit the environment for a package set
 ```
 
+##GVM Installing Go versions
 ```
+$ gvm listall
 $ gvm install go1.7.3 -B
 Installing go1.7.3 from binary source
 ```
@@ -118,6 +163,10 @@ Now using version system
 ```
 $ which go
 /usr/lib/golang/bin/go
+$ go env
+...
+GOPATH="${HOME}/.gvm/pkgsets/go1.7.3/global"
+...
 ```
 
 ```
@@ -131,6 +180,8 @@ gvm gos (installed)
 => go1.7.3
    system
 ```
+
+##GVM Configure Your Golang Workspace
 
 So now we have a local version of go installed, our GOPATH and PATH are setup,
 and we have access to the go executable. Now what? One of the neat things about
@@ -163,9 +214,27 @@ environment. We could manually set GOPATH and PATH to be prefixed with our new
 src directory, but there's a better way. We'll use the gvm pkgenv command with
 our fresh work pkgset so that our new workspace will always be found in GOPATH.
 
+Example:
+```
+# original line
+export GOPATH; GOPATH="/Users/james/.gvm/pkgsets/go1.2/ottemo:$GOPATH"
+# ---> new edited line
+export GOPATH; GOPATH="/Users/james/.gvm/pkgsets/go1.2/ottemo:$HOME/go:$GOPATH"
+# original line
+export PATH; PATH="/Users/james/.gvm/pkgsets/go1.2/ottemo/bin:${GVM_OVERLAY_PREFIX}/bin:${PATH}"
+# ---> new edited line
+export PATH; PATH="/Users/james/.gvm/pkgsets/go1.2/ottemo/bin:${GVM_OVERLAY_PREFIX}/bin:$HOME/go/bin:${PATH}"
+```
+
 ```
 $ gvm pkgenv work
 ```
+
+#Go Vendoring
+
+Take a look to this good explanation:
+
+https://blog.gopheracademy.com/advent-2015/vendor-folder/
 
 
 
