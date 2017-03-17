@@ -146,7 +146,7 @@ Commands:
   pkgenv     - edit the environment for a package set
 ```
 
-##GVM Installing Go versions
+## GVM Installing Go versions
 ```
 $ gvm listall
 $ gvm install go1.7.3 -B
@@ -196,12 +196,14 @@ gvm gos (installed)
    system
 ```
 
-##GVM Configure Your Golang Workspace
+## GVM Configure Your Golang Workspace
 
 So now we have a local version of go installed, our GOPATH and PATH are setup,
 and we have access to the go executable. Now what? One of the neat things about
 gvm is the notion of pkgsets, basically allowing you to define separate
 "workspaces" and group a set of go projects using the same go version.
+
+A package set is a dedicated $GOPATH, nothing much more.
 
 Let's create a pkgset called "example".
 
