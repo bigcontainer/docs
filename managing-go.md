@@ -1,16 +1,16 @@
-#What is Go
+# What is Go
 
 Three foundations:
 
-Go Language
-Go Libraries
-Go Tools
+1. Go Language
+2. Go Libraries
+3. Go Tools
 
-#Google pattner workflow for Go Lang
+# Google pattner workflow for Go Lang
 
 https://golang.org/doc/code.html
 
-#About Go Tools
+# About Go Tools
 
 Go tools are packages and tools that support the Go programming language.
 Some of the tools are included in binary Go distributions.  Others can be 
@@ -22,7 +22,7 @@ for managing workspaces of Go packages (download, build, and run programs).
 Go command-line interface uses the ‘‘Swiss army knife’’ style, with over a
 dozen subcommands. 
 
-#Go Workspace
+# Go Workspace
 
 Go programs must be kept in a directory hierarchy called a workspace, which is
 simply a root directory of the Go programs.  A workspace contains three 
@@ -51,7 +51,7 @@ When starting a new program or library, it is recommended to do so inside
 the src folder, using a fully qualified path (for instance: github.com/<your
 username>/<project name>)
 
-#GOPATH
+# GOPATH
 
 You write Go programs in the workspace, which you should manually specify so
 that Go runtime knows the workspace location. You can set the workspace 
@@ -92,13 +92,13 @@ GOOS specifies the target operating system (for example, android , linux ,
 darwin , or windows ) and GOARCH specifies the target processor architecture, 
 such as amd64 , 386 , or arm . Although GOPATH is the only variable you must set.
 
-#Go Version Manager - GVM
+# Go Version Manager - GVM
 
 GVM provides an interface to manage Go versions.
 
 https://github.com/moovweb/gvm
 
-##GVM Installation
+## GVM Installation
 ```
 $ bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
 $ source ~/.gvm/scripts/gvm
