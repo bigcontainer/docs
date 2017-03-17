@@ -247,11 +247,15 @@ export PATH; PATH="/Users/james/.gvm/pkgsets/go1.2/ottemo/bin:${GVM_OVERLAY_PREF
 $ gvm pkgenv work
 ```
 
-#Go Vendoring
+# Go Vendoring
 
 Take a look to this good explanation:
 
 https://blog.gopheracademy.com/advent-2015/vendor-folder/
+
+# Go Code Organization
+
+https://talks.golang.org/2014/organizeio.slide#1
 
 
 
