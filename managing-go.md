@@ -51,6 +51,21 @@ When starting a new program or library, it is recommended to do so inside
 the src folder, using a fully qualified path (for instance: github.com/<your
 username>/<project name>)
 
+The Go tool understands the layout of a workspace. You don't need a Makefile. 
+The file layout is everything. Change the file layout, change the build.
+```
+$GOPATH/
+    src/
+        github.com/user/repo/
+            mypkg/
+                mysrc1.go
+                mysrc2.go
+            cmd/mycmd/
+                main.go
+    bin/
+        mycmd
+```
+
 # GOPATH
 
 You write Go programs in the workspace, which you should manually specify so
